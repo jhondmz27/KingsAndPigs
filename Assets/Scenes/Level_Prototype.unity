@@ -2504,7 +2504,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 3
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 37e513b0c7c2e464fb3da00310ec2a80, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -2610,6 +2610,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   jumpForce: 10
+  extraJumps: 1
+  counterExtraJumps: 0
   lFoot: {fileID: 237443933}
   rFoot: {fileID: 2054672615}
   isGrounded: 0
