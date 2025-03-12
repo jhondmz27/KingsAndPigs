@@ -657,7 +657,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""id"": ""d7a9fcce-0cff-4078-aab9-25d209f7f299"",
                     ""path"": ""1DAxis"",
                     ""interactions"": """",
-                    ""processors"": """",
+                    ""processors"": ""AxisDeadzone"",
                     ""groups"": """",
                     ""action"": ""Move"",
                     ""isComposite"": true,

@@ -25,7 +25,7 @@ public class GatterInputs : MonoBehaviour
 
     private void StartMove(InputAction.CallbackContext context)
     {
-        _valueX = context.ReadValue<float>();
+        _valueX = Mathf.RoundToInt(context.ReadValue<float>());
     }
 
     private void StopMove(InputAction.CallbackContext context)
