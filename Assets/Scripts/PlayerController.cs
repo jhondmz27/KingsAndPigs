@@ -1,37 +1,56 @@
 using System;
+using Unity.VisualScripting;
 using UnityEditor.Tilemaps;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
     //PLAYER COMPONENTS
+    [Header("Components")]
+    [SerializeField] private Transform m_transform;
     private Rigidbody2D m_rigidbody2D;
     private GatterInputs m_gatterInput;
-    private Transform m_transform;
+
     private Animator m_animator;
 
-    [Header("Move and Jump settings")]
+    //ANIMATOR IDS
+    private int idSpeed;
+    private int idIsGrounded;
+
+    [Header("Move settings")]
     [SerializeField] private float speed;
     private int direction = 1;
+    
+    [Header("Jump settings")]
     [SerializeField] private float jumpForce;
     [SerializeField] private int extraJumps;
     [SerializeField] private int counterExtraJumps;
-    private int idSpeed;
+    [SerializeField] private bool canDoubleJumps;
+
 
     [Header("Ground settings")]
     [SerializeField] private Transform lFoot;
     [SerializeField] private Transform rFoot;
+    RaycastHit2D lFootRay;
+    RaycastHit2D rFootRay;
     [SerializeField] private bool isGrounded;
     [SerializeField] private float rayLength;
     [SerializeField] private LayerMask groundLayer;
-    private int idIsGrounded;
+    
+    [Header("Wall settings")]
+    [SerializeField] private float checkWallDistance;
+    [SerializeField] private bool isWallDetected;
+
+    private void Awake()
+    {
+        m_gatterInput = GetComponent<GatterInputs>();
+        //m_transform = GetComponent<Transform>();
+        m_rigidbody2D = GetComponent<Rigidbody2D>();
+        m_animator = GetComponent<Animator>();
+    }
 
     void Start()
     {
-        m_gatterInput = GetComponent<GatterInputs>();
-        m_transform = GetComponent<Transform>();
-        m_rigidbody2D = GetComponent<Rigidbody2D>();
-        m_animator = GetComponent<Animator>();
         idSpeed = Animator.StringToHash("Speed");
         idIsGrounded = Animator.StringToHash("IsGrounded");
         lFoot = GameObject.Find("LFoot").GetComponent<Transform>();
@@ -52,9 +71,9 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+        CheckCollision();
         Move();
         Jump();
-        CheckGround();
     }
 
     private void Move()
@@ -74,9 +93,12 @@ public class PlayerController : MonoBehaviour
     {
         if (m_gatterInput.IsJumping)
         {
-            if(isGrounded)
+            if (isGrounded)
+            {
                 m_rigidbody2D.velocity = new Vector2(speed * m_gatterInput.ValueX, jumpForce);
-            if(counterExtraJumps > 0)
+                canDoubleJumps = true;
+            }
+            else if(counterExtraJumps > 0 && canDoubleJumps)
             {
                 m_rigidbody2D.velocity = new Vector2(speed * m_gatterInput.ValueX, jumpForce);
                 counterExtraJumps--;
@@ -85,18 +107,35 @@ public class PlayerController : MonoBehaviour
         m_gatterInput.IsJumping = false;
     }
 
-    private void CheckGround()
+    private void CheckCollision()
     {
-        RaycastHit2D lFootRay = Physics2D.Raycast(lFoot.position, Vector2.down, rayLength,groundLayer);
-        RaycastHit2D rFootRay = Physics2D.Raycast(rFoot.position, Vector2.down, rayLength,groundLayer);
-        if(lFootRay || rFootRay)
+        HandleGround();
+        HandleWall();
+    }
+
+    private void HandleWall()
+    {
+        isWallDetected = Physics2D.Raycast(m_transform.position, Vector2.right * direction, checkWallDistance, groundLayer);
+    }
+
+    private void HandleGround()
+    {
+        lFootRay = Physics2D.Raycast(lFoot.position, Vector2.down, rayLength, groundLayer);
+        rFootRay = Physics2D.Raycast(rFoot.position, Vector2.down, rayLength, groundLayer);
+        if (lFootRay || rFootRay)
         {
             isGrounded = true;
             counterExtraJumps = extraJumps;
+            canDoubleJumps = false;
         }
         else
         {
             isGrounded = false;
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawLine(m_transform.position, new Vector2(m_transform.position.x +(checkWallDistance * direction), m_transform.position.y));
     }
 }
