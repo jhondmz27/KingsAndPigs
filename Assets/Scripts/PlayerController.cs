@@ -40,6 +40,8 @@ public class PlayerController : MonoBehaviour
     [Header("Wall settings")]
     [SerializeField] private float checkWallDistance;
     [SerializeField] private bool isWallDetected;
+    [SerializeField] private bool canWalSlide;
+    [SerializeField] private float slideSpeed;
 
     private void Awake()
     {
@@ -79,11 +81,11 @@ public class PlayerController : MonoBehaviour
     private void Move()
     {
         Flip();
-        m_rigidbody2D.velocity = new Vector2(speed * m_gatterInput.ValueX, m_rigidbody2D.velocityY);
+        m_rigidbody2D.velocity = new Vector2(speed * m_gatterInput.Value.x, m_rigidbody2D.velocityY);
     }
     private void Flip()
     {
-        if(m_gatterInput.ValueX * direction < 0)
+        if(m_gatterInput.Value.x * direction < 0)
         {
             m_transform.localScale = new Vector3(-m_transform.localScale.x, 1, 1);
             direction *= -1;
@@ -95,12 +97,12 @@ public class PlayerController : MonoBehaviour
         {
             if (isGrounded)
             {
-                m_rigidbody2D.velocity = new Vector2(speed * m_gatterInput.ValueX, jumpForce);
+                m_rigidbody2D.velocity = new Vector2(speed * m_gatterInput.Value.x, jumpForce);
                 canDoubleJumps = true;
             }
             else if(counterExtraJumps > 0 && canDoubleJumps)
             {
-                m_rigidbody2D.velocity = new Vector2(speed * m_gatterInput.ValueX, jumpForce);
+                m_rigidbody2D.velocity = new Vector2(speed * m_gatterInput.Value.x, jumpForce);
                 counterExtraJumps--;
             }
         }
@@ -111,6 +113,16 @@ public class PlayerController : MonoBehaviour
     {
         HandleGround();
         HandleWall();
+        HandleWallSlide();
+    }
+
+    private void HandleWallSlide()
+    {
+        canWalSlide = isWallDetected;
+        if (!canWalSlide) return;
+        canDoubleJumps = false;
+        slideSpeed = m_gatterInput.Value.y < 0 ? 1 : 0.5f;
+        m_rigidbody2D.velocity = new Vector2(m_rigidbody2D.velocityX, m_rigidbody2D.velocityY * slideSpeed);
     }
 
     private void HandleWall()

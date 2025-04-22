@@ -587,9 +587,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""1D Axis"",
-                    ""id"": ""68e75d87-e05b-4241-9ffb-239d272193a1"",
-                    ""path"": ""1DAxis"",
+                    ""name"": ""2D Vector"",
+                    ""id"": ""28c865b7-a764-4e1e-b0d4-6db4933c5a9c"",
+                    ""path"": ""2DVector"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -598,9 +598,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""negative"",
-                    ""id"": ""bf99f1d0-3624-4a44-b625-fe5556532a0a"",
-                    ""path"": ""<Keyboard>/a"",
+                    ""name"": ""up"",
+                    ""id"": ""91595279-fa4a-41d2-aceb-4adb4213a08a"",
+                    ""path"": ""<Keyboard>/upArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
@@ -609,9 +609,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""positive"",
-                    ""id"": ""df318f10-678e-46b5-b2a3-cdd6fbb699a5"",
-                    ""path"": ""<Keyboard>/d"",
+                    ""name"": ""down"",
+                    ""id"": ""4f211561-b754-4a84-baa0-a7898824cc5c"",
+                    ""path"": ""<Keyboard>/downArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
@@ -620,9 +620,31 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""1D Axis"",
-                    ""id"": ""d00fef72-44f5-4e5b-81ab-be347117152a"",
-                    ""path"": ""1DAxis"",
+                    ""name"": ""left"",
+                    ""id"": ""488a9ca2-a9ff-4751-99d4-d0d468721472"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""e2fd83d4-3da9-462b-ba02-fb2cd4cd135c"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""fcfe5d10-7b5d-4679-8bb3-91c3867a0a03"",
+                    ""path"": ""2DVector"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -631,9 +653,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""negative"",
-                    ""id"": ""00693535-5814-4dfa-8b68-3c8c403c8159"",
-                    ""path"": ""<HID::Microntek              USB Joystick          >/stick/left"",
+                    ""name"": ""up"",
+                    ""id"": ""9a2bb60d-64f3-461f-ad83-5c86a5703c6d"",
+                    ""path"": ""<HID::Microntek              USB Joystick          >/hat/up"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Gamepad"",
@@ -642,9 +664,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""positive"",
-                    ""id"": ""942ee69c-33ac-4eed-9d98-8c7719a04b67"",
-                    ""path"": ""<HID::Microntek              USB Joystick          >/stick/right"",
+                    ""name"": ""down"",
+                    ""id"": ""10ee152b-0344-4dfa-a17f-0d58e589faef"",
+                    ""path"": ""<HID::Microntek              USB Joystick          >/hat/down"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Gamepad"",
@@ -653,20 +675,42 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""1D Axis"",
-                    ""id"": ""d7a9fcce-0cff-4078-aab9-25d209f7f299"",
-                    ""path"": ""1DAxis"",
+                    ""name"": ""left"",
+                    ""id"": ""72c3975b-4ab7-471e-a9eb-327200517262"",
+                    ""path"": ""<HID::Microntek              USB Joystick          >/hat/left"",
                     ""interactions"": """",
-                    ""processors"": ""AxisDeadzone"",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""74e4cda1-48d4-4e93-8c26-406f9b603aef"",
+                    ""path"": ""<HID::Microntek              USB Joystick          >/hat/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""260e7630-1fe8-46b9-acff-6754b938190f"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Move"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""negative"",
-                    ""id"": ""b185f884-d848-4004-98a4-1e1a903205e1"",
-                    ""path"": ""<HID::Microntek              USB Joystick          >/stick/left"",
+                    ""name"": ""up"",
+                    ""id"": ""3a81faf2-394b-48ab-9acd-84a96f3a3cd0"",
+                    ""path"": ""<Joystick>/stick/up"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Gamepad"",
@@ -675,8 +719,30 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""positive"",
-                    ""id"": ""0c6bb621-adc8-4a2a-8568-890a5b25ba22"",
+                    ""name"": ""down"",
+                    ""id"": ""e38ca169-4691-4195-9026-de679439bda3"",
+                    ""path"": ""<Joystick>/stick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""b8bc1581-e014-43ae-99a7-403692999f73"",
+                    ""path"": ""<Joystick>/stick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""20ca196c-fbf4-45a5-8570-a75fccd141e9"",
                     ""path"": ""<Joystick>/stick/right"",
                     ""interactions"": """",
                     ""processors"": """",
