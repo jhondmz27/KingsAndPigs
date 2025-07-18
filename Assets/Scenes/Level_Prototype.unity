@@ -2824,6 +2824,9 @@ MonoBehaviour:
   isWallDetected: 0
   canWalSlide: 0
   slideSpeed: 0
+  wallJumpForce: {x: 5, y: 8}
+  isWallJumping: 0
+  wallJumpDuration: 0.25
 --- !u!95 &1112772435
 Animator:
   serializedVersion: 7
